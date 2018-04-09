@@ -2,7 +2,7 @@ pipeline:
   touch:
     image: alpine
     commands:
-      - flock /lock sh -c 'echo $RANDOM | tee /tmp/random/random'
+      - flock /lock sh -c 'date +%s.%N | tee /tmp/random/random'
     volumes:
       - /locks/osie/lock:/lock
       - /tmp/test:/tmp/random/
