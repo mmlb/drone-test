@@ -1,16 +1,28 @@
 pipeline:
+  touch:
+    image: alpine
+    commands:
+      - flock /lock sh -c 'echo $RANDOM | tee /tmp/random/random'
+    volumes:
+      - /locks/osie/lock:/lock
+      - /tmp/test:/tmp/random/
   hi:
     image: alpine
     commands:
       - flock /lock sh -c 'sleep 5; echo "hi";'
+      - cat /tmp/random/random
     volumes:
       - /locks/osie/lock:/lock
+      - /tmp/test:/tmp/random/
   hello:
     image: alpine
     commands:
-      - flock /lock sh -c 'sleep 5; echo "${greet}";'
+      - sleep 5
+      - echo "${greet}"
+      - cat /tmp/random/random
     volumes:
       - /locks/osie/lock:/lock
+      - /tmp/test:/tmp/random/
   done:
     image: alpine
     commands:
