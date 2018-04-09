@@ -15,7 +15,7 @@ pipeline:
     volumes:
       - /locks/osie/lock:/lock
       - /tmp/test:/tmp/random/
-  hello:
+  greet:
     image: alpine
     commands:
       - sleep 5
@@ -35,3 +35,8 @@ matrix:
   greet:
     - hello
     - hola
+    - 你好
+    - hallo
+    - aloha
+    - ciao
+    - 今日は
