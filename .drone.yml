@@ -1,9 +1,10 @@
+greet: &greet
+  image: alpine
+  commands:
+    - sleep 5
+    - echo "$greet"
+
 pipeline:
-  greet: &greet
-    image: alpine
-    commands:
-      - sleep 5
-      - echo "$greet"
   hi:
     <<: *greet
     environment:
