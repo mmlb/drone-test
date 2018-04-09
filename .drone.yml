@@ -12,23 +12,23 @@ pipeline:
 
   test-aarch64-ubuntu_16_04:
     image: alpine
-    group: build
+    group: test
     commands:
       - echo OS=ubuntu_16_04 make test-aarch64
   test-aarch64-ubuntu_17_10:
     image: alpine
-    group: build
+    group: test
     commands:
       - echo OS=ubuntu_17_10 make test-aarch64
 
   test-x86_64-ubuntu_16_04:
     image: alpine
-    group: build
+    group: test
     commands:
       - echo OS=ubuntu_16_04 make test-x86_64
   test-x86_64-ubuntu_17_10:
     image: alpine
-    group: build
+    group: test
     commands:
       - echo OS=ubuntu_17_10 make test-x86_64
 

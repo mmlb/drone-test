@@ -7,7 +7,7 @@ pipeline: {% for arch in arches %}
 {% for vmtest in vmtests %}{% for os in vmtest.oses %}
   test-{{vmtest.arch}}-{{os}}:
     image: alpine
-    group: build
+    group: test
     commands:
       - echo OS={{os}} make test-{{vmtest.arch}}{% endfor %}
 {% endfor %}
