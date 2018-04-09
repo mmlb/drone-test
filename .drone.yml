@@ -2,6 +2,7 @@ pipeline:
   touch:
     image: alpine
     commands:
+      - apk add --update coreutils
       - flock /lock sh -c 'date +%s.%N | tee /tmp/random/random'
     volumes:
       - /locks/osie/lock:/lock
