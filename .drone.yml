@@ -1,42 +1,22 @@
 pipeline:
-  touch:
-    image: alpine
-    commands:
-      - apk add --update coreutils
-      - flock /lock sh -c 'date +%s.%N | tee /tmp/random/random'
-    volumes:
-      - /locks/osie/lock:/lock
-      - /tmp/test:/tmp/random/
-  hi:
-    image: alpine
-    commands:
-      - flock /lock sh -c 'sleep 5; echo "hi";'
-      - cat /tmp/random/random
-    volumes:
-      - /locks/osie/lock:/lock
-      - /tmp/test:/tmp/random/
-  greet:
+  greet: &greet
     image: alpine
     commands:
       - sleep 5
-      - echo "${greet}"
-      - cat /tmp/random/random
-    volumes:
-      - /locks/osie/lock:/lock
-      - /tmp/test:/tmp/random/
+      - echo "$greet"
+  hi:
+    <<: *greet
+    environment:
+      greet=hi
+  hello:
+    <<: *greet
+    environment:
+      greet=hello
+  hola:
+    <<: *greet
+    environment:
+      greet=hola
   done:
     image: alpine
     commands:
       - echo "done"
-    when:
-      matrix:
-        greet: hola
-matrix:
-  greet:
-    - hello
-    - hola
-    - 你好
-    - hallo
-    - aloha
-    - ciao
-    - 今日は
