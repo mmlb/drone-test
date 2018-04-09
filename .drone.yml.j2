@@ -3,7 +3,8 @@ pipeline: {% for arch in arches %}
     image: alpine
     group: build
     commands:
-      - echo make build/osie-{{arch}}.tar.gz{% endfor %}
+      - echo make build/osie-{{arch}}.tar.gz
+      - sleep 2{% endfor %}
 {% for vmtest in vmtests %}{% for os in vmtest.oses %}
   test-{{vmtest.arch}}-{{os}}:
     image: alpine

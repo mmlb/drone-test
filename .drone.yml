@@ -4,11 +4,13 @@ pipeline:
     group: build
     commands:
       - echo make build/osie-x86_64.tar.gz
+      - sleep 2
   build-aarch64:
     image: alpine
     group: build
     commands:
       - echo make build/osie-aarch64.tar.gz
+      - sleep 2
 
   test-aarch64-ubuntu_16_04:
     image: alpine
