@@ -3,9 +3,15 @@ pipeline:
     image: alpine
     group: simple
     commands:
+      - sleep 5
       - echo "hi"
   hello:
     image: alpine
     group: simple
     commands:
+      - sleep 5
       - echo "hello"
+  done:
+    image: alpine
+    commands:
+      - echo "done"
