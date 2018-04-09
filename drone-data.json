@@ -1,0 +1,13 @@
+{
+	"arches":["x86_64", "aarch64"],
+	"vmtests": [
+		{"arch":"aarch64", "oses": [
+			"ubuntu_16_04",
+			"ubuntu_17_10"
+		]},
+		{"arch":"x86_64", "oses": [
+			"ubuntu_16_04",
+			"ubuntu_17_10"
+		]}
+	]
+}
