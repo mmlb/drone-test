@@ -1,5 +1,11 @@
 pipeline:
-  simple:
+  hi:
     image: alpine
+    group: simple
     commands:
       - echo "hi"
+  hello:
+    image: alpine
+    group: simple
+    commands:
+      - echo "hello"
