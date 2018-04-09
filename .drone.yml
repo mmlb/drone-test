@@ -1,18 +1,25 @@
 pipeline:
+  touch:
+    image: alpine
+    commands:
+      - echo $RANDOM > touched
   hi:
     image: alpine
     commands:
       - sleep 5
       - echo "hi"
+      - cat touched
   hello:
     image: alpine
     commands:
       - sleep 5
       - echo "${greet}"
+      - cat touched
   done:
     image: alpine
     commands:
       - echo "done"
+      - cat touched
 matrix:
   greet:
     - hello
