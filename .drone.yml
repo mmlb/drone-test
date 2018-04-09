@@ -10,8 +10,12 @@ pipeline:
     group: simple
     commands:
       - sleep 5
-      - echo "hello"
+      - echo "${greet}"
   done:
     image: alpine
     commands:
       - echo "done"
+matrix:
+  greet:
+    - hello
+    - hola
